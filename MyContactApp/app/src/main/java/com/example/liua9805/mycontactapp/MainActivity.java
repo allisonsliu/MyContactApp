@@ -1,16 +1,22 @@
 package com.example.liua9805.mycontactapp;
 
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
     DatabaseHelper myDb;
     EditText editName;
+    EditText editAge;
+    EditText editPhone;
     Button btnAddData;
 
 
@@ -21,7 +27,57 @@ public class MainActivity extends ActionBarActivity {
 
         myDb = new DatabaseHelper (this);
 
+        editName = (EditText) findViewById(R.id.editText_name);
+        editAge =  (EditText) findViewById(R.id.editText_age);
+        editPhone = (EditText) findViewById(R.id.editText_phone);
     }
+
+    public void addData(View v){
+        boolean isInsertedName = myDb.insertData(editName.getText().toString(),editAge.getText().toString(),editPhone.getText().toString());
+
+        if(isInsertedName == true){
+            Log.d("MyContact", "Data insertion successful");
+            Toast.makeText(getApplicationContext(), "Data insertion successful", Toast.LENGTH_LONG).show();
+            //Creat toast message to user indicating data inserted correctly
+        }
+        else{
+            Log.d("MyContact", "Data insertion NOT successful");
+            Toast.makeText(getApplicationContext(), "Data insertion NOT successful", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void viewData(View v){
+        Cursor res = myDb.getAllData();
+        if(res.getCount() == 0){
+            showMessage("Error", "No data found in database");
+            return;
+        }
+        StringBuffer buffer = new StringBuffer();
+        if(res != null){
+            res.moveToFirst();
+            for(int i = 0; i<res.getCount(); i++){
+                for (int j = 0; j < res.getColumnCount(); j++) {
+                    buffer.append(res.getString(j) + "|");
+                }
+                buffer.append("\n");
+                res.moveToNext();
+                }
+            res.close();
+        }
+        //setup loop with cursor moveToNext method
+        //      append each COL to buffer
+        //      use getString method
+
+        showMessage("Data", buffer.toString());
+    }
+
+
+
+    private void showMessage(String title, String message){
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
