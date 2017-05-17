@@ -1,5 +1,6 @@
 package com.example.liua9805.mycontactapp;
 
+import android.app.AlertDialog;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -54,18 +55,18 @@ public class MainActivity extends ActionBarActivity {
         }
         StringBuffer buffer = new StringBuffer();
         if(res != null){
-            res.moveToFirst();
-            for(int i = 0; i<res.getCount(); i++){
-                for (int j = 0; j < res.getColumnCount(); j++) {
-                    buffer.append(res.getString(j) + "|");
+                res.moveToFirst();
+                for(int i = 0; i<res.getCount(); i++){
+                    for (int j = 0; j < res.getColumnCount(); j++) {
+                        buffer.append(res.getString(j) + "\n");
+                    }
+                    buffer.append("\n");
+                    res.moveToNext();
                 }
-                buffer.append("\n");
-                res.moveToNext();
-                }
-            res.close();
+                res.close();
         }
         //setup loop with cursor moveToNext method
-        //      append each COL to buffer
+            //      append each COL to buffer
         //      use getString method
 
         showMessage("Data", buffer.toString());
@@ -74,7 +75,11 @@ public class MainActivity extends ActionBarActivity {
 
 
     private void showMessage(String title, String message){
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 
 

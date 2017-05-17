@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by liua9805 on 5/11/2017.
@@ -25,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, AGE TEXT, PHONE TEXT)");
     }
 
     @Override
@@ -40,7 +41,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contentValues.put(COL_2, name);
         contentValues.put(COL_3, age);
         contentValues.put(COL_4, phone);
-;
+        
+        Log.d("MyContact", "DatabaseHelper: Set up contentValues");
 
         long result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1) return false;
