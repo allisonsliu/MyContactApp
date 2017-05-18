@@ -30,13 +30,10 @@
         android:layout_height="wrap_content"
         android:text="ADD DATA"
         android:id="@+id/button_add"
-        android:layout_marginBottom="51dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/editText_name"
-        android:layout_alignEnd="@+id/editText_name"
-        android:layout_marginRight="44dp"
-        android:layout_marginEnd="44dp"
-        android:onClick="addData" />
+        android:onClick="addData"
+        android:layout_alignTop="@+id/button_view"
+        android:layout_alignLeft="@+id/button_search"
+        android:layout_alignStart="@+id/button_search" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,10 +41,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="AGE:"
         android:id="@+id/textView"
-        android:layout_above="@+id/editText_phone"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="96dp" />
+        android:layout_marginTop="76dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,20 +52,18 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="PHONE NUMBER:"
         android:id="@+id/textView2"
-        android:layout_above="@+id/button_add"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="82dp" />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/button_view"
+        android:layout_alignEnd="@+id/button_view" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText_age"
-        android:layout_alignRight="@+id/editText_name"
-        android:layout_alignEnd="@+id/editText_name"
         android:layout_alignBottom="@+id/textView"
         android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toLeftOf="@+id/button_search" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -77,8 +72,8 @@
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2" />
 
     <Button
         android:layout_width="wrap_content"
@@ -86,7 +81,38 @@
         android:text="VIEW DATA"
         android:id="@+id/button_view"
         android:onClick="viewData"
-        android:layout_alignTop="@+id/button_add"
+        android:layout_below="@+id/textView2"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEARCH DATA"
+        android:id="@+id/button_search"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/editText_phone"
+        android:layout_alignEnd="@+id/editText_phone"
+        android:layout_marginBottom="45dp"
+        android:onClick="searchData" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_search"
+        android:layout_alignBottom="@+id/button_search"
+        android:layout_toLeftOf="@+id/button_search"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search new page"
+        android:id="@+id/button_new"
+        android:layout_below="@+id/button_add"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="openNewPage" />
+
 </RelativeLayout>
