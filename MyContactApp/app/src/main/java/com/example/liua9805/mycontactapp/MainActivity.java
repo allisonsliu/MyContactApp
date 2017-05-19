@@ -116,6 +116,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void openNewPage(View v){
         Intent i = new Intent(this, SearchActivity.class);
+        i.putExtra("Name",editName.getText().toString());
+        i.putExtra("Age",editAge.getText().toString());
+        i.putExtra("Phone",editPhone.getText().toString());
         startActivity(i);
     }
 

@@ -1,10 +1,13 @@
 package com.example.liua9805.mycontactapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class SearchActivity extends MainActivity {
@@ -13,10 +16,17 @@ public class SearchActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("Name");
+        String age = intent.getStringExtra("Age");
+        String phone = intent.getStringExtra("Phone");
+
     }
     public void searchData(View v){
         super.searchData(v);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
